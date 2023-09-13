@@ -1,24 +1,23 @@
 #include "ft_printf.h"
 
-void ft_putnbr_pf(int nb, size_t *count_char){
-    if (count_char == NULL)
+void ft_putnbr_pf(int nb, int *p_count){
+    long long nbr;
+
+    nbr = nb;
+    if (p_count == NULL)
         return; 
-    if (nb == -2147483648){
-        write(1, "-2147483648", 12);
-        (*count_char) += 11;
-        return; 
+    if (nbr < 0)
+    {
+        ft_putchar_pf('-', p_count);
+        ft_putnbr_pf((nbr* -1), p_count);
     }
-    if (nb < 0){
-        ft_putchar_pf('-', count_char);
-        ft_putnbr_pf((nb* -1), count_char);
-    }
-    if (nb >= 0 && nb <= 9){
-        ft_putchar_pf((nb + '0'), count_char);
-    }
+    if (nbr >= 0 && nbr <= 9)
+        ft_putchar_pf((nbr + '0'), p_count);
     
-    if (nb > 9){
-        ft_putnbr_pf((nb / 10), count_char);
-        ft_putnbr_pf((nb % 10), count_char);
+    if (nbr > 9)
+    {
+        ft_putnbr_pf((nbr / 10), p_count);
+        ft_putchar_pf((nbr % 10) + '0', p_count);
     }
 }
 /*

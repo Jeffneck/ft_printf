@@ -1,9 +1,10 @@
 #include "ft_printf.h"
 
-void ft_putchar_pf(char c, size_t *count_char){
-    if(count_char == NULL){
+void ft_putchar_pf(char c, int *p_count)
+{
+    if(p_count == NULL){
         return;
     }
     write(1, &c, 1);
-    (*count_char)++;
+    (*p_count)++;
 }

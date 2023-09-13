@@ -1,12 +1,13 @@
 #include "ft_printf.h"
 
-void ft_putstr_pf (char *str, size_t *count_char){
-    if(count_char == NULL)
+void ft_putstr_pf (char *str, int *p_count)
+{
+    if(p_count == NULL)
         return;
     if(str == NULL)
         str = "(null)";
     while(*str){ 
-        ft_putchar_pf(*str, count_char);
+        ft_putchar_pf(*str, p_count);
         str++;
     }
 }

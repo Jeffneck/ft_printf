@@ -26,5 +26,12 @@ int ft_printf(const char *str_to_f, ...)
 
 void    detect_format(const char format, va_list args, int *ptotal)
 {
+    
+    if (format == 'c')
+        ft_putchar_pf(va_arg(args, char), ptotal);
+    else if (format == 's')
+        ft_putstr_pf(va_arg(args, char *), ptotal);
+    else if (format == 'd')
+        ft_putnbr_pf(va_arg(args, int), ptotal);
 
 }
