@@ -24,6 +24,20 @@ void ft_putnbr_pf(int nbr, int *p_count)
         ft_putchar_pf((nbr % 10) + '0', p_count);
     }
 }
+
+void ft_putnbr_unsigned_pf(unsigned int nbr, int *p_count)
+{
+    if (p_count == NULL)
+        return; 
+    if (nbr <= 9)
+        ft_putchar_pf((nbr + '0'), p_count);
+    
+    if (nbr > 9)
+    {
+        ft_putnbr_unsigned_pf((nbr / 10), p_count);
+        ft_putchar_pf((nbr % 10) + '0', p_count);
+    }
+}
 /*
 int main()
 {

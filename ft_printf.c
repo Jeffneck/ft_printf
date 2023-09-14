@@ -33,9 +33,13 @@ void    detect_format(const char format, va_list *args, int *ptotal)
         ft_putchar_pf(va_arg((*args), int), ptotal);
     else if (format == 's')
         ft_putstr_pf(va_arg((*args), char *), ptotal);
-    else if (format == 'd')
+    else if (format == 'd' || format == 'i')
         ft_putnbr_pf(va_arg((*args), int), ptotal);
+    else if (format == 'u')
+        ft_putnbr_unsigned_pf(va_arg((*args), unsigned int), ptotal);
     else if (format == 'x' || format == 'X')
         ft_puthexa_pf(va_arg((*args), int), format, ptotal);
+    else if (format == 'p')
+        ft_putptr_pf(va_arg((*args), unsigned long long), ptotal);
 
 }
