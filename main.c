@@ -8,6 +8,7 @@ int main ()
     int n = 1000;
     char str[] = "blablabla";
 
-    ft_printf("Bonjour char = %c, int = %d, str = %s\n");
+    bytes_displayed = ft_printf("Bonjour char = %c, int = %d, str = %s\n", c, n, str);
+    ft_printf("bytes displayed = %d\n", bytes_displayed);
     return (0);
 }

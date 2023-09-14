@@ -28,7 +28,7 @@ void    detect_format(const char format, va_list args, int *ptotal)
 {
     
     if (format == 'c')
-        ft_putchar_pf(va_arg(args, char), ptotal);
+        ft_putchar_pf((char)va_arg(args, int), ptotal);
     else if (format == 's')
         ft_putstr_pf(va_arg(args, char *), ptotal);
     else if (format == 'd')

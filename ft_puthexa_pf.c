@@ -13,7 +13,7 @@ void ft_puthexa_pf(unsigned int nb, int *p_count)
     if (p_count == NULL)
         return; 
     
-    if (nb >= 0 && nb <= 16){
+    if (nb <= 16){
         ft_b10_to_b16_pf(nb, p_count);
     }
     
