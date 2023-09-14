@@ -13,7 +13,7 @@ int ft_printf(const char *str_to_f, ...)
     {
         if (str_to_f[i] == '%')
         {
-            detect_format(str_to_f[i + 1], args, &total);
+            detect_format(str_to_f[i + 1], &args, &total);
             i++;
         }
         else
@@ -24,14 +24,18 @@ int ft_printf(const char *str_to_f, ...)
     return(total);
 }
 
-void    detect_format(const char format, va_list args, int *ptotal)
+void    detect_format(const char format, va_list *args, int *ptotal)
 {
-    
-    if (format == 'c')
-        ft_putchar_pf((char)va_arg(args, int), ptotal);
+
+    if (format == '%')
+        ft_putchar_pf('%', ptotal);
+    else if (format == 'c')
+        ft_putchar_pf(va_arg((*args), int), ptotal);
     else if (format == 's')
-        ft_putstr_pf(va_arg(args, char *), ptotal);
+        ft_putstr_pf(va_arg((*args), char *), ptotal);
     else if (format == 'd')
-        ft_putnbr_pf(va_arg(args, int), ptotal);
+        ft_putnbr_pf(va_arg((*args), int), ptotal);
+    else if (format == 'x' || format == 'X')
+        ft_puthexa_pf(va_arg((*args), int), format, ptotal);
 
 }

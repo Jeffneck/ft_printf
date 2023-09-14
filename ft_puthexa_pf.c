@@ -3,23 +3,27 @@
 //à cause de la manière dont ils sont rpz en mémoire (complément à 2)
 //on utilise des unsigned int pour que cela fonctionne de la mm manière.
 
-void ft_b10_to_b16_pf(unsigned int nb, int *p_count){
-    char b16[] = "0123456789abcdef"; 
+void ft_b10_to_b16_pf(unsigned int nb, char *b16, int *p_count)
+{ 
     ft_putchar_pf(b16[nb], p_count);
-
 }
-void ft_puthexa_pf(unsigned int nb, int *p_count)
+void ft_puthexa_pf(unsigned int nb, char format, int *p_count)
 {
     if (p_count == NULL)
         return; 
-    
-    if (nb <= 16){
-        ft_b10_to_b16_pf(nb, p_count);
+
+    if (nb <= 16)
+    {
+        if (format == 'x')
+            ft_b10_to_b16_pf(nb, "0123456789abcdef", p_count);
+        else
+           ft_b10_to_b16_pf(nb, "0123456789ABCDEF", p_count); 
     }
     
-    if (nb > 16){
-        ft_puthexa_pf((nb / 16), p_count);
-        ft_puthexa_pf((nb % 16), p_count);
+    if (nb > 16)
+    {
+        ft_puthexa_pf((nb / 16), format, p_count);
+        ft_puthexa_pf((nb % 16), format, p_count);
     }
 
 }
